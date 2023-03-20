@@ -27,17 +27,17 @@ export default function Home() {
       setLoading(true);
       setMessageIsStreaming(true);
 
-      const response = await fetch("/api/chat", {
+      const response = await fetch("http://localhost:8000/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
           model,
-          messages: updatedConversation.messages,
+          messages: [message],
           key: apiKey
         })
-      });
+      }); 
 
       if (!response.ok) {
         setLoading(false);
